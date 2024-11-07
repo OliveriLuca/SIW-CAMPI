@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+	<section class="section">
+
+		<div style="align-items: center; text-align: center;">
+	<h1>Congratulazioni ti sei registrato!</h1>
+	<div>
+		<span>Nome: </span>
+		<span th:text="${user.name}"></span>
+	</div>
+	<div>
+		<span>Cognome: </span>
+		<span th:text="${user.surname}"></span>
+	</div>
+	<div>
+		<span>Email: </span>
+		<span th:text="${user.email}"></span>
+	</div>
+	
+	<a href="/login">Torna alla pagina di login</a>
+	</div>
+
+	</section>
+
+</body>
+</html>

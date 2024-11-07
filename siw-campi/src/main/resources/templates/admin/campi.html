@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		siw-campi
+	</title>
+	
+</head>
+
+<body>
+	<nav>
+		
+			<div>
+				<a href="/logout">
+					Logout
+				</a>
+			</div>	
+	</nav>
+	<header>
+		<div>
+			<h1> CAMPI PRESENTI NEL SISTEMA </h1>
+		</div>
+	</header>
+	<section >
+			<div th:if="${campi.isEmpty()}"> 
+				Non ci sono campi nel sistema! 
+			</div> 
+			
+			<div th:unless="${campi.isEmpty()}">
+			<ul>
+				<li th:each="campo : ${campi}">
+				<span th:text="${campo.nome} + ' ('+ ${campo.tipo} + ')'"> 
+				   	
+					<button class="button-confirmP" type="submit">
+					<a th:href= "'/admin/showFormModificaCampo/' + ${campo.id}" > 
+					Modifica
+					</a>  
+					</button>	
+					
+				</span>
+				
+				</li>
+			</ul>
+				
+			</div>
+	</section>
+	
+</body>
+
+</html>

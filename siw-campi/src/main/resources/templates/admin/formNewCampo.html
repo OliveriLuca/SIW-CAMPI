@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	
+	<section class="section">
+	<div class="login-container" style="margin-top: 10%;">
+	<div id="loginMenu">
+		<div style="text-align: center;">
+				<h1>Aggiungi un campo</h1>
+				</div>
+	<form th:action="@{/admin/campo}" method="POST">
+		
+		
+		<div th:object="${campo}">
+			
+			
+		<div class="item_Form">
+				<label>Nome del campo</label>
+				<span><input type="text"  required th:field="${campo.nome}" /></span>
+				<!--<span th:if="${#fields.hasErrors('campo.nome')}" th:errors="${campo.nome}" th:style="'color:red'">-->
+				</span>
+		</div>	
+			
+		
+		<div class="item_Form">
+			<label>Costo</label>
+			<span><input required type="text"   th:field="${campo.costo}" /></span>
+			<!--<span th:if="${#fields.hasErrors('campo.costo')}" th:errors="${campo.costo}" th:style="'color:red'">-->
+			</span>
+		</div>
+		
+		<div class="item_Form">
+			<label>Numero di giocatori</label>
+			<span><input type="text"  required th:field="${campo.numero_giocatori}" /></span>
+			<!--<span th:if="${#fields.hasErrors('campo.numero_giocatori')}" th:errors="${campo.numero_giocatori}" th:style="'color:red'">-->
+			</span>
+		</div>
+		
+		
+		<div class="item_Form">
+			<label>Tipo</label>
+			<span>
+				<input type="text" required th:field="${campo.tipo}" />
+			</span>
+			<!--<span th:if="${#fields.hasErrors('campo.tipo')}" th:errors="${campo.tipo}"
+				th:style="'color:red'">
+			</span>-->
+		</div>
+		
+      </div>
+      
+		<div>
+			<button class="button-confirmP" type="submit">Inserisci</button>
+		</div>
+	</form>
+	
+	</div>
+	</div>
+	</section>
+	
+	<footer class="footer">
+		
+	</footer>
+	
+</body>
+
+</html>

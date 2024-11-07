@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<body>
+
+	<section class="section">
+
+		<div style="align-items: center; text-align: center;">
+	<h1>Campo inserito correttamente!</h1>
+	
+	<div>
+		<span>Nome: </span>
+		<span th:text="${campo.nome}"></span>
+	</div>
+	
+	<div>
+		<span>Tipo: </span>
+		<span th:text="${campo.tipo}"></span>
+	</div>
+	<div>
+		<span>Costo: </span>
+		<span th:text="${campo.costo}"></span>
+	</div>
+	<div>
+		<span>Numero di giocatori: </span>
+		<span th:text="${campo.numero_giocatori}"></span>
+	</div>
+	
+	<a href="/success">Torna alla homePage dell' Admin</a>
+	</div>
+
+	</section>
+
+</body>
+</html>

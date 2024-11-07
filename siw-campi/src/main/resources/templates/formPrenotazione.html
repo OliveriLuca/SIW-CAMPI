@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="description" content="Prenotazione campi da calcio online - Trova e prenota il campo da calcio perfetto vicino a te!">
+    <title>Prenota Qui!</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #28a745;
+            color: black;
+            padding: 10px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+        .main-banner {
+            background-image: url('campo-da-calcio.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .main-banner h2 {
+            font-size: 3em;
+            margin: 10px;
+        }
+        .content {
+            padding: 40px;
+            text-align: center;
+        }
+        .content h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 400px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+        .booking-form section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .booking-form label {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        .booking-form input, .booking-form select {
+            padding: 10px;
+            font-size: 1em;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .booking-form button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .booking-form button:hover {
+            background-color: #218838;
+        }
+         footer {
+            background-color: #28a745;
+            color: black;
+            text-align: center;
+            padding: 4px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Prenota il tuo campo!</h1>
+    </header>
+
+    <section class="content">
+        
+        <form class="booking-form">
+            <section>
+                <label for="date">Data:</label> 
+                <input type="date" id="date" name="date" required min="2025-01-01" max="2025-12-31">
+            </section> 
+            
+            <section>
+                <label for="time">Orario:</label>
+                <select id="time" name="time">
+                    <option value="16:00 - 17:30">16:00 - 17:30</option>
+                    <option value="17:30 - 19:00">17:30 - 19:00</option>
+                    <option value="19:00 - 20:30">19:00 - 20:30</option>
+                    <option value="20:30 - 22:00">20:30 - 22:00</option>
+                </select>
+            </section>
+            
+            <section>    
+                <label for="field-type">Tipo di campo:</label>
+                <select id="field-type" name="field-type">
+                    <option value="5vs5">5 vs 5</option>
+                    <option value="8vs8">8 vs 8</option>
+                    <option value="11vs11">11 vs 11</option>
+              </select>
+              </section>
+              
+              <footer>
+        <p>&copy; 2024 Siw-Campi. Tutti i diritti riservati.</p>
+    </footer>
+              
+   </section>
+  
+</body>
+</html>

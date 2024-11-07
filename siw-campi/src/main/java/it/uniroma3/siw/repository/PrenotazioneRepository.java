@@ -1,0 +1,26 @@
+package it.uniroma3.siw.repository;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.data.repository.CrudRepository;
+import it.uniroma3.siw.model.Campo;
+import it.uniroma3.siw.model.Prenotazione;
+import it.uniroma3.siw.model.User;
+
+
+public interface PrenotazioneRepository extends CrudRepository<Prenotazione, Long>{
+	
+	public Optional<Prenotazione> findById(Long id);
+
+	public Optional<Prenotazione> findByData(LocalDate data);
+
+	public Optional<Prenotazione> findByOrario(LocalTime orario);
+
+	public Optional<Prenotazione> findByCampo(Campo campo);
+
+	public List<Prenotazione> findByUser(User user);
+
+	
+}
