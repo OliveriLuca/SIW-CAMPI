@@ -53,11 +53,11 @@ public class Campo {
 		this.nome = nome;
 	}
 
-	public Long getId_campo() {
+	public Long getId() {
 		return this.id;
 	}
 	
-	public void setId_campo(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

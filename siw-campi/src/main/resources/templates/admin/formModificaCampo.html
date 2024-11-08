@@ -2,70 +2,48 @@
 <html>
 
 <body>
-	
-	<section class="section">
-	<div class="login-container" style="margin-top: 10%;">
-	<div id="loginMenu">
-		<div style="text-align: center;">
-				<h1>Modifica il campo</h1>
-				</div>
-	<form th:action="@{'/admin/formModificaCampo/' + ${campoDaModificare.id}}" method="POST">
-		
-		<div th:object="${campoDaModificare}">
-			
-		<div class="item_Form">
-				<label>Nome del campo</label>
-				<span><input type="text"  required th:field="${campoDaModificare.nome}" /></span>
-				<!--<span th:if="${#fields.hasErrors('campo.nome')}" th:errors="${campo.nome}" th:style="'color:red'">-->
-				</span>
-		</div>	
-			
-		
-		<div class="item_Form">
-			<label>Aumenta o riduci il costo</label>
-			<span><input required type="text"   th:field="${campoDaMoficare.costo}" /></span>
-			<!--<span th:if="${#fields.hasErrors('campo.costo')}" th:errors="${campo.costo}" th:style="'color:red'">-->
-			</span>
-		</div>
-		
-		<div class="item_Form">
-			<label>Cambia il numero di giocatori</label>
-			<span><input type="text"  required th:field="${campoDaModificare.numero_giocatori}" /></span>
-			<!--<span th:if="${#fields.hasErrors('campo.numero_giocatori')}" th:errors="${campo.numero_giocatori}" th:style="'color:red'">-->
-			</span>
-		</div>
-		
-		
-		<div class="item_Form">
-			<label>Cambia il tipo</label>
-			<span>
-				<input type="text" required th:field="${campoDaModificare.tipo}" />
-			</span>
-			<!--<span th:if="${#fields.hasErrors('campo.tipo')}" th:errors="${campo.tipo}"
-				th:style="'color:red'">
-			</span>-->
-		</div>
-		
-      </div>
-      
-		<div>
-			<button class="button-confirmP" type="submit">Effettua modifica</button>
-		</div>
-	</form>
-	
-	</div>
-	</div>
-	</section>
-	
-	<footer class="footer">
-		
-	</footer>
-	
+
+<section class="section">
+    <div class="login-container" style="margin-top: 10%;">
+        <div id="loginMenu">
+            <div style="text-align: center;">
+                <h1>Modifica il campo</h1>
+            </div>
+
+            <!-- Associa `campoDaModificare` come oggetto principale del form -->
+            <form th:action="@{'/admin/formModificaCampo/' + ${campoDaModificare.id}}" th:object="${campoDaModificare}" method="POST">
+                
+                <div class="item_Form">
+                    <label>Nome del campo</label>
+                    <span><input type="text" required th:field="*{nome}" /></span>
+                </div>  
+
+                <div class="item_Form">
+                    <label>Aumenta o riduci il costo</label>
+                    <span><input type="text" required th:field="*{costo}" /></span>
+                </div>
+
+                <div class="item_Form">
+                    <label>Cambia il numero di giocatori</label>
+                    <span><input type="text" required th:field="*{numero_giocatori}" /></span>
+                </div>
+
+                <div class="item_Form">
+                    <label>Cambia il tipo</label>
+                    <span><input type="text" required th:field="*{tipo}" /></span>
+                </div>
+
+                <div>
+                    <button class="button-confirmP" type="submit">Effettua modifica</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+</footer>
+
 </body>
 
 </html>
-
-
-
-
-
