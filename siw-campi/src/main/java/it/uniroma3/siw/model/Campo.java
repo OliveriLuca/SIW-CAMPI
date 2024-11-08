@@ -1,6 +1,8 @@
 package it.uniroma3.siw.model;
 
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,8 +34,7 @@ public class Campo {
 	@SequenceGenerator(name = "campo_generator", sequenceName = "campo_seq", allocationSize = 1)
 	private Long id;
 	
-	@Column(nullable = false)
-	private int numeroGiocatori; 
+	
 	
 	@Column(nullable = false)
 	private int costo;
@@ -45,6 +46,23 @@ public class Campo {
 	private String nome;
 	
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(nome);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Campo other = (Campo) obj;
+		return Objects.equals(nome, other.nome);
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -61,14 +79,7 @@ public class Campo {
 		this.id = id;
 	}
 
-	public int getNumero_giocatori() {
-		return numeroGiocatori;
-	}
-
-	public void setNumero_giocatori(int numero_giocatori) {
-		this.numeroGiocatori = numero_giocatori;
-	}
-
+	
 	public int getCosto() {
 		return costo;
 	}

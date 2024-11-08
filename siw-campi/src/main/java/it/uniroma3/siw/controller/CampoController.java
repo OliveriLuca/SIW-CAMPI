@@ -17,8 +17,6 @@ import jakarta.validation.Valid;
 @Controller
 public class CampoController {
 
-	@Autowired 
-	CampoRepository campoRepository;
 
 	@Autowired 
 	CampoService campoService;
@@ -29,12 +27,17 @@ public class CampoController {
 		model.addAttribute("campo", new Campo());
 		return "/admin/formNewCampo.html";
 	} 
- 
+
 	@PostMapping("/admin/campo")
 	public String newCampo(@Valid @ModelAttribute("campo") Campo campo,  Model model) {
+		if(! this.campoService.existsByNome(campo.getNome())) {
 			this.campoService.save(campo); 
 			model.addAttribute("campo", campo);
 			return "/admin/campoInserito.html";
+		}
+
+		return "/admin/formNewCampo.html";
+
 	}
 
 	@GetMapping("/campo/{id}")
@@ -50,10 +53,11 @@ public class CampoController {
 	}
 
 	@GetMapping("/formSearchCampi")
-	public String formSearchCampi() {
+	public String formSearchCampi(Model model) {
+		model.addAttribute("campi", this.campoService.findAll());
 		return "formSearchCampi.html";
 	}
 
-	
+
 
 }

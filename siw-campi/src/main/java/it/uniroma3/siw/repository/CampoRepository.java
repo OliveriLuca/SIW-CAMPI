@@ -13,12 +13,12 @@ public interface CampoRepository extends CrudRepository<Campo, Long>{
 
 	public Campo findById(long id); 
 	
-	public Campo findByNumeroGiocatori(int n);
+	public List<Campo> findByCosto(int c);
 	
-	public Campo findByCosto(int c);
-	
-	public Campo findByTipo(String s);
+	public List<Campo> findByTipo(String s);
 	
 	public List<Campo> findAll();
+	
+	public boolean existsByNome(String nome);
 	
 }

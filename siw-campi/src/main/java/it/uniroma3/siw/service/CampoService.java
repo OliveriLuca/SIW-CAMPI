@@ -22,15 +22,12 @@ public class CampoService {
 		return this.campoRepository.findById(id);
 	}
 
-	public Campo findByNumeroGiocatori(int n) {
-		return this.campoRepository.findByNumeroGiocatori(n);
-	}
 
-	public Campo findByCosto(int c) {
+	public List<Campo> findByCosto(int c) {
 		return this.campoRepository.findByCosto(c);
 	}
 
-	public Campo findByTipo(String s) {
+	public List<Campo> findByTipo(String s) {
 		return this.campoRepository.findByTipo(s);
 	}
 
@@ -40,6 +37,10 @@ public class CampoService {
 	
 	public List<Campo> findAll(){
 		return this.campoRepository.findAll(); 
+	}
+	
+	public boolean existsByNome(String nome) {
+		return this.campoRepository.existsByNome(nome);
 	}
 	
 	

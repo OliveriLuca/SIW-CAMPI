@@ -105,38 +105,26 @@
         <h1>Prenota il tuo campo!</h1>
     </header>
 
-    <section class="content">
-        
-        <form class="booking-form">
-            <section>
-                <label for="date">Data:</label> 
-                <input type="date" id="date" name="date" required min="2025-01-01" max="2025-12-31">
-            </section> 
-            
-            <section>
-                <label for="time">Orario:</label>
-                <select id="time" name="time">
-                    <option value="16:00 - 17:30">16:00 - 17:30</option>
-                    <option value="17:30 - 19:00">17:30 - 19:00</option>
-                    <option value="19:00 - 20:30">19:00 - 20:30</option>
-                    <option value="20:30 - 22:00">20:30 - 22:00</option>
-                </select>
-            </section>
-            
-            <section>    
-                <label for="field-type">Tipo di campo:</label>
-                <select id="field-type" name="field-type">
-                    <option value="5vs5">5 vs 5</option>
-                    <option value="8vs8">8 vs 8</option>
-                    <option value="11vs11">11 vs 11</option>
-              </select>
-              </section>
-              
-              <footer>
-        <p>&copy; 2024 Siw-Campi. Tutti i diritti riservati.</p>
-    </footer>
-              
-   </section>
+	<section class="content">
+	    <form th:action="@{/formNewPrenotazione/{id}(id=${campoDaPrenotare.id})}" th:object="${prenotazione}" method="POST">
+	        <section>
+	            <label for="date">Data:</label> 
+	            <input type="date" id="date" name="data" required th:field="${prenotazione.data}" min="2025-01-01" max="2025-12-31">
+	        </section> 
+	        
+	        <section>
+	            <label for="orario">Orario:</label>
+	            <select id="orario" name="orario" required th:field="${prenotazione.orario}">
+	                <option value="16:00">16:00</option>
+	                <option value="17:30">17:30</option>
+	                <option value="19:00">19:00</option>
+	                <option value="20:30">20:30</option>
+	            </select>
+	        </section>
+	        
+	        <button type="submit">Prenota</button>
+	    </form>
+	</section>
   
 </body>
 </html>

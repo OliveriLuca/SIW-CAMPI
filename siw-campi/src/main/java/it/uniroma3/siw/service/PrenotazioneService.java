@@ -23,7 +23,7 @@ public class PrenotazioneService {
 	@Autowired 
 	protected PrenotazioneRepository prenotazioneRepository;
 
-	
+
 	@Transactional
 	public Prenotazione save(Prenotazione prenotazione) {
 		return this.prenotazioneRepository.save(prenotazione);
@@ -52,11 +52,18 @@ public class PrenotazioneService {
 			res.add(pren);
 		return res;
 	}
-	
+
 	public Long count() {
 		return this.prenotazioneRepository.count();
 	}
-	
-	
-    
+
+	public boolean existsByData(LocalDate data) {
+		return this.prenotazioneRepository.existsByData(data);
+	}
+
+	public boolean existsByOrario(LocalTime orario) {
+		return this.prenotazioneRepository.existsByOrario(orario);
+	}
+
+
 }

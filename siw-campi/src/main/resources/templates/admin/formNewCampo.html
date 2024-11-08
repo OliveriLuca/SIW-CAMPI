@@ -30,19 +30,19 @@
 			</span>
 		</div>
 		
-		<div class="item_Form">
-			<label>Numero di giocatori</label>
-			<span><input type="text"  required th:field="${campo.numero_giocatori}" /></span>
-			<!--<span th:if="${#fields.hasErrors('campo.numero_giocatori')}" th:errors="${campo.numero_giocatori}" th:style="'color:red'">-->
-			</span>
-		</div>
-		
 		
 		<div class="item_Form">
-			<label>Tipo</label>
-			<span>
+			<!--<span>
 				<input type="text" required th:field="${campo.tipo}" />
-			</span>
+			</span>-->
+			<section>    
+                <label>Tipo di campo:</label>
+                <select id="tipo" name="tipo">
+                    <option value="5vs5">5 vs 5</option>
+                    <option value="8vs8">8 vs 8</option>
+                    <option value="11vs11">11 vs 11</option>
+              </select>
+			</section>
 			<!--<span th:if="${#fields.hasErrors('campo.tipo')}" th:errors="${campo.tipo}"
 				th:style="'color:red'">
 			</span>-->
