@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>siw-campi</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="/logout">Logout</a>
+        </div>    
+    </nav>
+    <header>
+        <div>
+            <h1>Prenotazioni effettuate</h1>
+        </div>
+    </header>
+    <section>
+        <div th:if="${prenotazioni.isEmpty()}"> 
+            Non hai effettuato prenotazioni! 
+        </div> 
+        <div th:unless="${prenotazioni.isEmpty()}">
+            <ul>
+				<li th:each="prenotazione : ${prenotazioni}">
+				        <span th:text="${prenotazione.data} + ' ('+ ${prenotazione.orario} + ')'"> </span>
+				      
+				        <!-- Bottone per eliminare la prenotazione-->
+				        <a th:href="@{'/cancellaPrenotazione/' + ${prenotazione.id}}">
+				            <button type="button">Cancella</button>
+				        </a>
+						
+				    </li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>
+
+

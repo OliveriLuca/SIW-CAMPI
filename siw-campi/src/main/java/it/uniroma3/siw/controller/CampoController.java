@@ -57,6 +57,8 @@ public class CampoController {
 		model.addAttribute("campi", this.campoService.findAll());
 		return "formSearchCampi.html";
 	}
+	
+	
 
 
 

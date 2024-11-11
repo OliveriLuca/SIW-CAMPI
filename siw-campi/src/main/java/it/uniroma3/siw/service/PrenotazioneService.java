@@ -1,15 +1,17 @@
 package it.uniroma3.siw.service;
 
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
 import it.uniroma3.siw.model.Campo;
+import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Prenotazione;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.PrenotazioneRepository;
@@ -22,6 +24,9 @@ public class PrenotazioneService {
 
 	@Autowired 
 	protected PrenotazioneRepository prenotazioneRepository;
+	
+	@Autowired 
+	CredentialsService credentialsService;
 
 
 	@Transactional
@@ -47,12 +52,22 @@ public class PrenotazioneService {
 
 	public List<Prenotazione> findByUser(User user){
 		List<Prenotazione> res = new ArrayList<Prenotazione>();
+		
 		Iterable<Prenotazione> iterable = this.prenotazioneRepository.findAll();
-		for(Prenotazione pren : iterable)
+		
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		user = credentials.getUser();
+		
+		for(Prenotazione pren : iterable) {
+			if(pren.getUser().getId() == user.getId()) {
 			res.add(pren);
+			}	
+		}
 		return res;
 	}
 
+		
 	public Long count() {
 		return this.prenotazioneRepository.count();
 	}
@@ -64,6 +79,10 @@ public class PrenotazioneService {
 	public boolean existsByOrario(LocalTime orario) {
 		return this.prenotazioneRepository.existsByOrario(orario);
 	}
+	
+	public boolean existsByOrarioAndData(LocalTime orario, LocalDate data) {
+		return this.prenotazioneRepository.existsByOrarioAndData(orario, data);
+	}
 
-
+    
 }

@@ -22,6 +22,7 @@ import it.uniroma3.siw.repository.PrenotazioneRepository;
 import it.uniroma3.siw.service.CredentialsService;
 
 
+
 @Controller
 public class UserController {
 
@@ -54,23 +55,18 @@ public class UserController {
 	@PostMapping("/admin/formModificaCampo/{id}")
 	public String formModificaCampo(@PathVariable("id") Long id, @ModelAttribute Campo nuovoCampo, Model model) {
 		Campo campo = this.campoRepository.findById(id).orElse(null);
-
 		if (campo != null) {
 			if (!nuovoCampo.getNome().equals(campo.getNome())) {
 				campo.setNome(nuovoCampo.getNome());
 			}
-
 			if (nuovoCampo.getCosto() != campo.getCosto()) {
 				campo.setCosto(nuovoCampo.getCosto());
 			}
-
 			if (!nuovoCampo.getTipo().equals(campo.getTipo())) {
 				campo.setTipo(nuovoCampo.getTipo());
 			}
-
 			this.campoRepository.save(campo);
 		}
-
 		return "redirect:/admin/campi"; // Reindirizza all’elenco dei campi aggiornato
 	}
 
@@ -86,26 +82,36 @@ public class UserController {
 
 	@PostMapping("/formNewPrenotazione/{id}")
 	public String formPrenotaCampo(@PathVariable("id") Long id, @ModelAttribute Prenotazione prenotazione, Model model,
-			                       @RequestParam("orario")LocalTime orario, @RequestParam("data")LocalDate data) {
+			@RequestParam("orario")LocalTime orario, @RequestParam("data")LocalDate data) {
 
 		Campo campo = this.campoRepository.findById(id).orElse(null);
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 		User user = credentials.getUser();
 
-		if(campo != null && ! this.prenotazioneRepository.existsByOrario(orario) && !this.prenotazioneRepository.existsByData(data)) {
+		if(campo != null && !this.prenotazioneRepository.existsByOrarioAndData(orario, data)){
 			prenotazione.setCampo(campo);
 			prenotazione.setUser(user);
 			prenotazione.setOrario(orario);
 			prenotazione.setData(data);		
-
 			this.prenotazioneRepository.save(prenotazione);
-
 			return "redirect:/formSearchCampi";
 		}
-
 		return "redirect:/formSearchCampi"; 
 	}
+
+
+	@GetMapping("/cancellaPrenotazione/{id}")
+	public String cancellaPrenotazione(@PathVariable("id") Long id, Model model) {
+		Prenotazione prenotazioneDaCancellare = this.prenotazioneRepository.findById(id).orElse(null);
+		if (prenotazioneDaCancellare != null) {
+			this.prenotazioneRepository.delete(prenotazioneDaCancellare);
+		}
+		return "homePage.html"; 
+	}
+
+
+    
 
 
 
