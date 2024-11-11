@@ -83,6 +83,14 @@ public class PrenotazioneService {
 	public boolean existsByOrarioAndData(LocalTime orario, LocalDate data) {
 		return this.prenotazioneRepository.existsByOrarioAndData(orario, data);
 	}
+	
+	public boolean existsByCampo(Campo campo) {
+		return this.prenotazioneRepository.existsByCampo(campo);
+	}
+	
+	public boolean existsByOrarioAndDataAndCampo(LocalTime orario, LocalDate data, Campo campo) {
+		return (this.prenotazioneRepository.existsByCampo(campo) && this.existsByOrarioAndData(orario, data)); 
+	}
 
     
 }

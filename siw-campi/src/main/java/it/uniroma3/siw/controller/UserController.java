@@ -89,7 +89,8 @@ public class UserController {
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 		User user = credentials.getUser();
 
-		if(campo != null && !this.prenotazioneRepository.existsByOrarioAndData(orario, data)){
+		if(campo != null &&  !this.prenotazioneRepository.existsByOrarioAndDataAndCampo(orario, data, campo)){
+			
 			prenotazione.setCampo(campo);
 			prenotazione.setUser(user);
 			prenotazione.setOrario(orario);
@@ -104,13 +105,20 @@ public class UserController {
 	@GetMapping("/cancellaPrenotazione/{id}")
 	public String cancellaPrenotazione(@PathVariable("id") Long id, Model model) {
 		Prenotazione prenotazioneDaCancellare = this.prenotazioneRepository.findById(id).orElse(null);
-		if (prenotazioneDaCancellare != null) {
+		
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		User user = credentials.getUser();
+		
+		if (prenotazioneDaCancellare != null && prenotazioneDaCancellare.getUser().equals(user)) {
 			this.prenotazioneRepository.delete(prenotazioneDaCancellare);
 		}
 		return "homePage.html"; 
 	}
 
-
+    
+	
+	
     
 
 
