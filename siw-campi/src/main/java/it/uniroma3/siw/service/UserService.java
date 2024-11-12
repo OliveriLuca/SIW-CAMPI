@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import it.uniroma3.siw.model.Campo;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.UserRepository;
 
@@ -52,5 +54,9 @@ public class UserService {
     public User findByEmail(String email) {
     	return this.userRepository.findByEmail(email);
     }
+    
+    public List<User> findAll(){
+		return this.userRepository.findAll();
+	}
     
 }

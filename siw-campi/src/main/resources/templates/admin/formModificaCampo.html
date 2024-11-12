@@ -26,7 +26,11 @@
 
                 <div class="item_Form">
                     <label>Cambia il tipo</label>
-                    <span><input type="text" required th:field="*{tipo}" /></span>
+					<select id="tipo" name="tipo">
+					 <option value="5vs5">5 vs 5</option>
+					 <option value="8vs8">8 vs 8</option>
+					 <option value="11vs11">11 vs 11</option>
+					 </select>
                 </div>
 
                 <div>
@@ -35,6 +39,11 @@
             </form>
         </div>
     </div>
+	
+	        <div>
+			<a href="/">Torna all'homepage </a>
+			</div>
+	
 </section>
 
 <footer class="footer">

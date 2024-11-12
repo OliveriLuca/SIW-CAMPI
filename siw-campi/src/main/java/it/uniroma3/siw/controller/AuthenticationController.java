@@ -69,7 +69,7 @@ public class AuthenticationController {
 				return "admin/index.html";
 			}
 		}
-        return "formLogin.html";
+        return "homePage.html";
 	}
 		
     @GetMapping(value = "/success")
@@ -112,7 +112,7 @@ public class AuthenticationController {
             model.addAttribute("user", user);
             return "registrationSuccessful.html";
         }
-        // se ci sono errori torno sulla register e mi devo sempre aspettare degli oggetti
+
         model.addAttribute("user", user);
         model.addAttribute("credentials", credentials);
         return "formRegisterUser.html";

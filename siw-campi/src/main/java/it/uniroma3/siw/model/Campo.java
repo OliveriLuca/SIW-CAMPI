@@ -34,8 +34,6 @@ public class Campo {
 	@SequenceGenerator(name = "campo_generator", sequenceName = "campo_seq", allocationSize = 1)
 	private Long id;
 	
-	
-	
 	@Column(nullable = false)
 	private int costo;
 	

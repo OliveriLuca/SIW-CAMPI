@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import it.uniroma3.siw.model.Campo;
-import it.uniroma3.siw.repository.CampoRepository;
 import it.uniroma3.siw.service.CampoService;
 import jakarta.validation.Valid;
 

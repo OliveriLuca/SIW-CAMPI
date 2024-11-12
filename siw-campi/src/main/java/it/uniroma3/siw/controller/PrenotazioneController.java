@@ -34,6 +34,13 @@ public class PrenotazioneController {
 
 		return "leMiePrenotazioni.html";
 	}
+	
+	
+	@GetMapping("/admin/prenotazioni")
+	public String getPrenotazioni(Model model) {
+		model.addAttribute("prenotazioni", this.prenotazioneService.findAll());
+		return "/admin/prenotazioni.html";
+	}
 
 
     

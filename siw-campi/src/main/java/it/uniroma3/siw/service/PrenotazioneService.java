@@ -23,8 +23,8 @@ import jakarta.transaction.Transactional;
 public class PrenotazioneService {
 
 	@Autowired 
-	protected PrenotazioneRepository prenotazioneRepository;
-	
+	PrenotazioneRepository prenotazioneRepository;
+
 	@Autowired 
 	CredentialsService credentialsService;
 
@@ -32,6 +32,10 @@ public class PrenotazioneService {
 	@Transactional
 	public Prenotazione save(Prenotazione prenotazione) {
 		return this.prenotazioneRepository.save(prenotazione);
+	}
+
+	public List<Prenotazione> findAll() {
+		return this.prenotazioneRepository.findAll();
 	}
 
 	public Optional<Prenotazione> findById(long id) {
@@ -52,22 +56,22 @@ public class PrenotazioneService {
 
 	public List<Prenotazione> findByUser(User user){
 		List<Prenotazione> res = new ArrayList<Prenotazione>();
-		
+
 		Iterable<Prenotazione> iterable = this.prenotazioneRepository.findAll();
-		
+
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 		user = credentials.getUser();
-		
+
 		for(Prenotazione pren : iterable) {
 			if(pren.getUser().getId() == user.getId()) {
-			res.add(pren);
+				res.add(pren);
 			}	
 		}
 		return res;
 	}
 
-		
+
 	public Long count() {
 		return this.prenotazioneRepository.count();
 	}
@@ -79,18 +83,18 @@ public class PrenotazioneService {
 	public boolean existsByOrario(LocalTime orario) {
 		return this.prenotazioneRepository.existsByOrario(orario);
 	}
-	
+
 	public boolean existsByOrarioAndData(LocalTime orario, LocalDate data) {
 		return this.prenotazioneRepository.existsByOrarioAndData(orario, data);
 	}
-	
+
 	public boolean existsByCampo(Campo campo) {
 		return this.prenotazioneRepository.existsByCampo(campo);
 	}
-	
+
 	public boolean existsByOrarioAndDataAndCampo(LocalTime orario, LocalDate data, Campo campo) {
 		return (this.prenotazioneRepository.existsByCampo(campo) && this.existsByOrarioAndData(orario, data)); 
 	}
 
-    
+
 }

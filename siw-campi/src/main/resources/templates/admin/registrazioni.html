@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>siw-campi</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="/logout">Logout</a>
+        </div>    
+    </nav>
+    <header>
+        <div>
+            <h1>UTENTI REGISTRATI</h1>
+        </div>
+    </header>
+    <section>
+        <div th:if="${registrazioni.isEmpty()}"> 
+            Non ci sono utenti nel sistema! 
+        </div> 
+        <div th:unless="${registrazioni.isEmpty()}">
+            <ul>
+                <li th:each="user : ${registrazioni}">
+                    <span th:text="'Nome: ' + ${user.name} + '    Cognome: ' + ${user.surname} +
+					'    Email: ' + ${user.email}"> </span>
+                </li>
+            </ul>
+        </div>
+		 
+		<div>
+		<a href="/">Torna all'homepage </a>
+		</div>
+		
+    </section>
+</body>
+</html>

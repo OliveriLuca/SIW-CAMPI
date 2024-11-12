@@ -22,7 +22,6 @@ public class CampoService {
 		return this.campoRepository.findById(id);
 	}
 
-
 	public List<Campo> findByCosto(int c) {
 		return this.campoRepository.findByCosto(c);
 	}

@@ -3,6 +3,7 @@ package it.uniroma3.siw.controller;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import it.uniroma3.siw.model.Campo;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Prenotazione;
@@ -20,6 +22,7 @@ import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.CampoRepository;
 import it.uniroma3.siw.repository.PrenotazioneRepository;
 import it.uniroma3.siw.service.CredentialsService;
+import it.uniroma3.siw.service.UserService;
 
 
 
@@ -31,6 +34,9 @@ public class UserController {
 
 	@Autowired
 	CredentialsService credentialsService;	
+	
+	@Autowired
+	UserService userService;	
 
 	@Autowired
 	CampoRepository campoRepository;
@@ -112,12 +118,17 @@ public class UserController {
 		
 		if (prenotazioneDaCancellare != null && prenotazioneDaCancellare.getUser().equals(user)) {
 			this.prenotazioneRepository.delete(prenotazioneDaCancellare);
+			return "prenotazioneCancellata.html";
 		}
-		return "homePage.html"; 
+		return "accessoNegato.html"; 
 	}
 
     
-	
+	@GetMapping("/admin/registrazioni")
+	public String getRegistrazioni(Model model) {
+		model.addAttribute("registrazioni", this.userService.getAllUsers());
+		return "/admin/registrazioni.html";
+	}
 	
     
 
