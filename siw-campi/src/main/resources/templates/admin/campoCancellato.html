@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<body>
+
+	<section class="section">
+			
+	<h1>Campo cancellato correttamente!</h1>
+	
+	<h2>Ecco sotto elencati i dettagli</h2>
+	
+	
+	
+	<div>
+		<span>Nome: </span>
+		<span th:text="${campoDaCancellare.nome}"></span>
+	</div>
+	
+	<div>
+		<span>Tipo: </span>
+		<span th:text="${campoDaCancellare.tipo}"></span>
+	</div>
+	
+	<div>
+		<span>Costo: </span>
+		<span th:text="${campoDaCancellare.costo}"></span>
+	</div>
+	
+	<a href="/admin/campi">Torna all'elenco aggiornato dei campi</a>
+	
+	
+	
+
+	</section>
+
+</body>
+
+</html>

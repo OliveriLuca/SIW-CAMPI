@@ -44,13 +44,29 @@ public class UserController {
 
 	@GetMapping("/admin/cancellaCampo/{id}")
 	public String cancellaCampo(@PathVariable("id") Long id, Model model) {
-		Campo campoDaCancellare = this.campoRepository.findById(id).orElse(null);
-		if (campoDaCancellare != null) {
-			this.campoRepository.delete(campoDaCancellare);
+		Campo campoDaCancellare = this.campoRepository.findById(id).get();
+		
+		/*sono presenti prenotazioni per questo campo?*/
+		if (this.prenotazioneRepository.existsByCampo(campoDaCancellare)) {
+			return "/admin/eliminazioneNegata.html";
 		}
-		return "redirect:/admin/campi"; // Reindirizza all’elenco dei campi aggiornato
+		
+		/*si può cancellare*/
+		model.addAttribute("campoDaCancellare", campoDaCancellare);
+		return "/admin/cancellaCampoConferma.html"; 
 	}
-
+	
+	
+	
+	@PostMapping("/admin/cancellaCampoConferma/{id}")
+	public String cancellaCampoConferma(@PathVariable("id") Long id, Model model) {
+		Campo campo = this.campoRepository.findById(id).get();
+		model.addAttribute("campoDaCancellare", campo);
+		this.campoRepository.delete(campo);
+		return "/admin/campoCancellato.html";
+	}
+	
+	
 	@GetMapping("/admin/showFormModificaCampo/{id}")
 	public String showModificaCampo(@PathVariable("id") Long id, Model model) {
 		Campo campoDaModificare = this.campoRepository.findById(id).orElse(null);
@@ -58,6 +74,7 @@ public class UserController {
 		return "/admin/formModificaCampo.html"; 
 	}
 
+	
 	@PostMapping("/admin/formModificaCampo/{id}")
 	public String formModificaCampo(@PathVariable("id") Long id, @ModelAttribute Campo nuovoCampo, Model model) {
 		Campo campo = this.campoRepository.findById(id).orElse(null);
@@ -127,11 +144,12 @@ public class UserController {
 	@GetMapping("/admin/registrazioni")
 	public String getRegistrazioni(Model model) {
 		model.addAttribute("registrazioni", this.userService.getAllUsers());
+		model.addAttribute("registrati", this.userService.count());
 		return "/admin/registrazioni.html";
 	}
 	
     
-
+    
 
 
 }

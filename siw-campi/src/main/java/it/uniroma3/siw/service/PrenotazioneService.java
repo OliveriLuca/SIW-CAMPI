@@ -38,7 +38,7 @@ public class PrenotazioneService {
 		return this.prenotazioneRepository.findAll();
 	}
 
-	public Optional<Prenotazione> findById(long id) {
+	public Prenotazione findById(long id) {
 		return this.prenotazioneRepository.findById(id);
 	}
 

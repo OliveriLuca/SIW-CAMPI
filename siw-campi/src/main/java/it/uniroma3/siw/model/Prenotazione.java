@@ -33,24 +33,24 @@ public class Prenotazione {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "campo_generator")
 	@SequenceGenerator(name = "campo_generator", sequenceName = "campo_seq", allocationSize = 1)
 	private Long id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_campo", nullable = false)
 	private Campo campo; 
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_user", nullable = false)
 	private User user;
-	
+
 	/*per rappresentare una data: giorno, mese, anno*/
 	@Column(nullable = false)
 	LocalDate data; 
-	
+
 	/*ha presente ora, minuti e secondi*/
 	@Column(nullable = false)
 	LocalTime orario;
 
-	
+
 	public Campo getCampo() {
 		return campo;
 	}
@@ -90,8 +90,8 @@ public class Prenotazione {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	
-	
-	
+
+
+
+
 }

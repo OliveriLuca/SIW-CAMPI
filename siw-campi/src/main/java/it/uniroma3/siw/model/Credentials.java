@@ -17,31 +17,31 @@ public class Credentials {
 
 	public static final String DEFAULT_ROLE = "DEFAULT";
 	public static final String ADMIN_ROLE = "ADMIN";
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "credentials_generator")
 	@SequenceGenerator(name = "credentials_generator", sequenceName = "credentials_seq", allocationSize = 1)
-    private Long id;
-	
+	private Long id;
+
 	@Column(unique = true)
 	@NotBlank(message = "Username non può essere vuoto")
 	@Size(min = 4, max = 40, message = "Username deve avere tra 4 e 40 caratteri")
 	private String username;
-	
+
 	@NotBlank(message = "Password non può essere vuota")
-    @Size(min = 4, message = "Password deve avere almeno 4 caratteri")
+	@Size(min = 4, message = "Password deve avere almeno 4 caratteri")
 	private String password;
-	
+
 	private String role;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
-	
-	
+
+
 	public String getUsername() {
 		return username;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -57,23 +57,23 @@ public class Credentials {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getRole() {
 		return role;
 	}
-	
+
 	public void setRole(String role) {
 		this.role = role;
 	}

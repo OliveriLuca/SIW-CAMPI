@@ -12,7 +12,8 @@ import it.uniroma3.siw.model.User;
 
 public interface PrenotazioneRepository extends CrudRepository<Prenotazione, Long>{
 
-	public Optional<Prenotazione> findById(Long id);
+	
+	public Prenotazione findById(long id);
 	
 	public List<Prenotazione> findAll();
 

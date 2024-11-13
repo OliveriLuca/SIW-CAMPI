@@ -34,9 +34,7 @@ public class CampoController {
 			model.addAttribute("campo", campo);
 			return "/admin/campoInserito.html";
 		}
-
 		return "/admin/formNewCampo.html";
-
 	}
 
 	@GetMapping("/campo/{id}")

@@ -21,9 +21,12 @@
         <div th:unless="${prenotazioni.isEmpty()}">
             <ul>
                 <li th:each="prenotazione : ${prenotazioni}">
-                    <span th:text="${prenotazione.data} + '    ' +${prenotazione.orario} + '    campo:  ' +
-					 ${prenotazione.campo.nome} + '    email utente: ' + ${prenotazione.user.email}">
-					</span>
+                    <span th:text="'ID della prenotazione: ' + ${prenotazione.id}"> </span>
+					
+					<a th:href="@{'/admin/dettagliPrenotazione/' + ${prenotazione.id}}">
+					<button type="button">Visualizza</button>
+					</a>
+					
                 </li>
             </ul>
         </div>

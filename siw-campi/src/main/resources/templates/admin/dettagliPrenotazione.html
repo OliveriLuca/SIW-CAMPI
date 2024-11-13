@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<body>
+
+	<section class="section">
+
+	<div style="align-items: center; text-align: center;">
+		
+	<h1>Dettagli della prenotazione</h1>
+	
+	<div>
+		<span>Data: </span>
+		<span th:text="${prenotazione.data}"></span>
+	</div>
+	
+	<div>
+		<span>Orario: </span>
+		<span th:text="${prenotazione.orario}"></span>
+	</div>
+	<div>
+		<span>Campo: </span>
+		<span th:text="${prenotazione.campo.nome}"></span>
+	</div>
+	
+	<div>
+	    <span>Email utente: </span>
+		<span th:text="${prenotazione.user.email}"></span>
+	</div>
+	
+	<a href="/admin/prenotazioni">Torna all' elenco delle prenotazioni</a>
+	
+	</div>
+
+	</section>
+
+</body>
+</html>
