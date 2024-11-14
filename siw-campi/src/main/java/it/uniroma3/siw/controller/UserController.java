@@ -34,7 +34,7 @@ public class UserController {
 
 	@Autowired
 	CredentialsService credentialsService;	
-	
+
 	@Autowired
 	UserService userService;	
 
@@ -45,19 +45,19 @@ public class UserController {
 	@GetMapping("/admin/cancellaCampo/{id}")
 	public String cancellaCampo(@PathVariable("id") Long id, Model model) {
 		Campo campoDaCancellare = this.campoRepository.findById(id).get();
-		
+
 		/*sono presenti prenotazioni per questo campo?*/
 		if (this.prenotazioneRepository.existsByCampo(campoDaCancellare)) {
 			return "/admin/eliminazioneNegata.html";
 		}
-		
+
 		/*si può cancellare*/
 		model.addAttribute("campoDaCancellare", campoDaCancellare);
 		return "/admin/cancellaCampoConferma.html"; 
 	}
-	
-	
-	
+
+
+
 	@PostMapping("/admin/cancellaCampoConferma/{id}")
 	public String cancellaCampoConferma(@PathVariable("id") Long id, Model model) {
 		Campo campo = this.campoRepository.findById(id).get();
@@ -65,8 +65,8 @@ public class UserController {
 		this.campoRepository.delete(campo);
 		return "/admin/campoCancellato.html";
 	}
-	
-	
+
+
 	@GetMapping("/admin/showFormModificaCampo/{id}")
 	public String showModificaCampo(@PathVariable("id") Long id, Model model) {
 		Campo campoDaModificare = this.campoRepository.findById(id).orElse(null);
@@ -74,7 +74,7 @@ public class UserController {
 		return "/admin/formModificaCampo.html"; 
 	}
 
-	
+
 	@PostMapping("/admin/formModificaCampo/{id}")
 	public String formModificaCampo(@PathVariable("id") Long id, @ModelAttribute Campo nuovoCampo, Model model) {
 		Campo campo = this.campoRepository.findById(id).orElse(null);
@@ -108,31 +108,36 @@ public class UserController {
 			@RequestParam("orario")LocalTime orario, @RequestParam("data")LocalDate data) {
 
 		Campo campo = this.campoRepository.findById(id).orElse(null);
+		
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 		User user = credentials.getUser();
 
 		if(campo != null &&  !this.prenotazioneRepository.existsByOrarioAndDataAndCampo(orario, data, campo)){
-			
+
 			prenotazione.setCampo(campo);
 			prenotazione.setUser(user);
 			prenotazione.setOrario(orario);
 			prenotazione.setData(data);		
 			this.prenotazioneRepository.save(prenotazione);
-			return "redirect:/formSearchCampi";
+
+			model.addAttribute(prenotazione);
+			return "prenotazioneSuccesso.html";
 		}
-		return "redirect:/formSearchCampi"; 
+
+		model.addAttribute(campo);
+		return "prenotazioneNegata.html";
 	}
 
 
 	@GetMapping("/cancellaPrenotazione/{id}")
 	public String cancellaPrenotazione(@PathVariable("id") Long id, Model model) {
 		Prenotazione prenotazioneDaCancellare = this.prenotazioneRepository.findById(id).orElse(null);
-		
+
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 		User user = credentials.getUser();
-		
+
 		if (prenotazioneDaCancellare != null && prenotazioneDaCancellare.getUser().equals(user)) {
 			this.prenotazioneRepository.delete(prenotazioneDaCancellare);
 			return "prenotazioneCancellata.html";
@@ -140,16 +145,16 @@ public class UserController {
 		return "accessoNegato.html"; 
 	}
 
-    
+
 	@GetMapping("/admin/registrazioni")
 	public String getRegistrazioni(Model model) {
 		model.addAttribute("registrazioni", this.userService.getAllUsers());
 		model.addAttribute("registrati", this.userService.count());
 		return "/admin/registrazioni.html";
 	}
-	
-    
-    
+
+
+
 
 
 }

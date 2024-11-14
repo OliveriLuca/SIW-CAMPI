@@ -12,8 +12,12 @@
 	<form th:action="@{/admin/campo}" method="POST">
 		
 		
-		<div th:object="${campo}">
-			
+		<div th:object="${campo}">	
+		  <div th:if="${#fields.hasGlobalErrors()}">
+			 <li th:each="err: ${#fields.globalErrors()}" th:text="${err}">...</li>
+		  </div>
+	    </div>
+						
 			
 		<div class="item_Form">
 				<label>Nome del campo</label>

@@ -11,7 +11,7 @@
 	<artifactId>siw-campi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>siw-campi</name>
-	<description>campi</description>
+	<description>Sito per prenotare campi</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

@@ -21,7 +21,7 @@
         <div th:unless="${prenotazioni.isEmpty()}">
             <ul>
 				<li th:each="prenotazione : ${prenotazioni}">
-				        <span th:text="${prenotazione.data} + ' ('+ ${prenotazione.orario} + ')'"> </span>
+				        <span th:text="${prenotazione.data} +'  ' + ${prenotazione.orario} + '  ' + ${prenotazione.campo.nome}"> </span>
 				      
 				        <!-- Bottone per eliminare la prenotazione-->
 				        <a th:href="@{'/cancellaPrenotazione/' + ${prenotazione.id}}">

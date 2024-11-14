@@ -10,6 +10,7 @@ import it.uniroma3.siw.repository.UserRepository;
 
 @Component
 public class UserValidator implements Validator {
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -26,4 +27,6 @@ public class UserValidator implements Validator {
 	public boolean supports(Class<?> aClass) {
 		return User.class.equals(aClass);
 	}
+	
+	
 }

@@ -31,11 +31,11 @@
 	<form th:action="@{/register}" method="POST">
 		
 		<div th:object="${user}">	
-			<div th:if="${#fields.hasGlobalErrors()}">
-				 <li th:each="err: ${#fields.globalErrors()}" th:text="${err}">...</li>
-			</div>
-			
-		</div>
+					<div th:if="${#fields.hasGlobalErrors()}">
+						 <li th:each="err: ${#fields.globalErrors()}" th:text="${err}">...</li>
+					</div>
+					
+				</div>
 		
 		<div th:object="${credentials}">
 			<div th:if="${#fields.hasGlobalErrors()}">

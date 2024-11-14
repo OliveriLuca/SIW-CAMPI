@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<body>
+
+	<section>
+
+	<div>
+		
+	<h1>Ecco la tua prenotazione!</h1>
+	
+	<div>
+		<span>Data: </span>
+		<span th:text="${prenotazione.data}"></span>
+	</div>
+	
+	<div>
+		<span>Orario: </span>
+		<span th:text="${prenotazione.orario}"></span>
+	</div>
+	<div>
+		<span>Campo: </span>
+		<span th:text="${prenotazione.campo.nome}"></span>
+	</div>
+	
+	<div>
+	<a href="/formSearchCampi">Torna all' elenco dei campi</a>
+	</div>
+	
+	<div>
+	<a href="/leMiePrenotazioni">Visualizza le tue prenotazioni</a>
+	</div>
+	
+	</div>
+
+	</section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -21,7 +21,7 @@
         <div th:unless="${campi.isEmpty()}">
             <ul>
 				<li th:each="campo : ${campi}">
-				        <span th:text="${campo.nome} + ' ('+ ${campo.tipo} + ')'"></span>
+				        <span th:text="${campo.nome}+'   '+${campo.tipo}+ '  Costo: '+${campo.costo} "></span>
 				        
 				        <!-- Bottone per selezionare il campo da prenotare -->
 				        <a th:href="@{/showFormNewPrenotazione/{id}(id=${campo.id})}">
