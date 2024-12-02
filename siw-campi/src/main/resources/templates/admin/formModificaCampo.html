@@ -3,28 +3,28 @@
 
 <body>
 
-<section class="section">
-    <div class="login-container" style="margin-top: 10%;">
-        <div id="loginMenu">
-            <div style="text-align: center;">
+<section >
+    <div >
+        <div >
+            <div >
                 <h1>Modifica il campo</h1>
             </div>
 
             <!-- Associa `campoDaModificare` come oggetto principale del form -->
             <form th:action="@{'/admin/formModificaCampo/' + ${campoDaModificare.id}}" th:object="${campoDaModificare}" method="POST">
                 
-                <div class="item_Form">
+                <div >
                     <label>Nome del campo</label>
                     <span><input type="text" required th:field="*{nome}" /></span>
                 </div>  
 
-                <div class="item_Form">
+                <div >
                     <label>Aumenta o riduci il costo</label>
                     <span><input type="text" required th:field="*{costo}" /></span>
                 </div>
 
 
-                <div class="item_Form">
+                <div >
                     <label>Cambia il tipo</label>
 					<select id="tipo" name="tipo">
 					 <option value="5vs5">5 vs 5</option>
@@ -46,8 +46,7 @@
 	
 </section>
 
-<footer class="footer">
-</footer>
+
 
 </body>
 

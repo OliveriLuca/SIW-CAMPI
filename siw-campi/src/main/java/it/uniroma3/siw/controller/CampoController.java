@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.controller.validator.CampoValidator;
 import it.uniroma3.siw.model.Campo;
@@ -64,7 +65,18 @@ public class CampoController {
 		model.addAttribute("campi", this.campoService.findAll());
 		return "formSearchCampi.html";
 	}
-
+	
+	@GetMapping("/filtri")
+	public String barraRicerca( Model model){
+		model.addAttribute("tipo", new String());
+		return "formTipoCampo.html";
+	}
+	
+	@GetMapping("/cercaTipoCampo")
+	public String cercaTipoCampo(@RequestParam("tipo")String tipo, Model model) {
+		model.addAttribute("tipoCampi", this.campoService.findByTipo(tipo));
+		return "tipoCampo.html";
+	}
 
 
 

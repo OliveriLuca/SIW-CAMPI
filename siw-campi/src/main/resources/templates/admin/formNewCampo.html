@@ -3,10 +3,10 @@
 
 <body>
 	
-	<section class="section">
-	<div class="login-container" style="margin-top: 10%;">
-	<div id="loginMenu">
-		<div style="text-align: center;">
+	<section>
+	<div>
+	<div>
+		     <div>
 				<h1>Aggiungi un campo</h1>
 				</div>
 	<form th:action="@{/admin/campo}" method="POST">
@@ -19,26 +19,23 @@
 	    </div>
 						
 			
-		<div class="item_Form">
+		<div>
 				<label>Nome del campo</label>
 				<span><input type="text"  required th:field="${campo.nome}" /></span>
-				<!--<span th:if="${#fields.hasErrors('campo.nome')}" th:errors="${campo.nome}" th:style="'color:red'">-->
+				
 				</span>
 		</div>	
 			
 		
-		<div class="item_Form">
+		<div >
 			<label>Costo</label>
 			<span><input required type="text"   th:field="${campo.costo}" /></span>
-			<!--<span th:if="${#fields.hasErrors('campo.costo')}" th:errors="${campo.costo}" th:style="'color:red'">-->
 			</span>
 		</div>
 		
 		
-		<div class="item_Form">
-			<!--<span>
-				<input type="text" required th:field="${campo.tipo}" />
-			</span>-->
+		<div >
+			
 			<section>    
                 <label>Tipo di campo:</label>
                 <select id="tipo" name="tipo">
@@ -47,9 +44,7 @@
                     <option value="11vs11">11 vs 11</option>
               </select>
 			</section>
-			<!--<span th:if="${#fields.hasErrors('campo.tipo')}" th:errors="${campo.tipo}"
-				th:style="'color:red'">
-			</span>-->
+			
 		</div>
 		
       </div>
@@ -68,9 +63,6 @@
 	
 	</section>
 	
-	<footer class="footer">
-		
-	</footer>
 	
 </body>
 

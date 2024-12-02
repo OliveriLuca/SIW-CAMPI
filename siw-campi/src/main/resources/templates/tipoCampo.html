@@ -11,22 +11,23 @@
     </nav>
     <header>
         <div>
-            <h1>CAMPI PRESENTI NEL SISTEMA</h1>
+            <h1>CAMPI IN BASE AL TIPO:</h1>
         </div>
     </header>
     <section>
-        <div th:if="${campi.isEmpty()}"> 
-            Non ci sono campi nel sistema! 
+        <div th:if="${tipoCampi.isEmpty()}"> 
+            Non ci sono campi nel sistema di questo tipo! 
         </div> 
-        <div th:unless="${campi.isEmpty()}">
+        <div th:unless="${tipoCampi.isEmpty()}">
             <ul>
-				<li th:each="campo : ${campi}">
+				<li th:each="campo : ${tipoCampi}">
 				        <span th:text="${campo.nome}+'   '+${campo.tipo}+ '  Costo: '+${campo.costo} "></span>
 				        
-				        <!-- Bottone per selezionare il campo da prenotare -->
-				        <a th:href="@{/showFormNewPrenotazione/{id}(id=${campo.id})}">
-				            <button type="button">Prenota</button>
-				        </a>
+						 <!-- Bottone per selezionare il campo da prenotare -->
+						 <a th:href="@{/showFormNewPrenotazione/{id}(id=${campo.id})}">
+						 <button type="button">Prenota</button>
+						 </a>
+						
 				    </li>
             </ul>
 			

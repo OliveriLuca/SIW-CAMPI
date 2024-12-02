@@ -2,7 +2,7 @@
 
 <body>
 
-	<section class="section">
+	<section style="align-items: center; text-align: center;">
 
 		<h1>Sicuro di voler cancellare il campo?</h1>
 		<form th:action="@{'/admin/cancellaCampoConferma/' + ${campoDaCancellare.id}}" th:object="${campoDaCancellare}" method="POST">
