@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 
-    
+    <head>
+		<link rel="stylesheet" href="/css/stile.css"/>
     <title>Prenota Qui!</title>
+	</head>
     
+	
 <body>
-
-    <header>
-        <h1>Prenota il tuo campo!</h1>
-    </header>
 
 	<section>
 	    <form th:action="@{/formNewPrenotazione/{id}(id=${campoDaPrenotare.id})}" th:object="${prenotazione}" method="POST">
