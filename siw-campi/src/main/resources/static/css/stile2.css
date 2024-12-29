@@ -1,0 +1,124 @@
+/* Stile di base */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Navbar */
+nav {
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    text-align: right;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Section */
+section {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Lista di campi */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #e0f7fa;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+li span {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+li button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+li button:hover {
+    background-color: #45a049;
+}
+
+/* Link Torna all'homepage */
+a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Messaggio di avviso */
+div[th\\:if],
+div[th\\:unless] {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.1em;
+    color: #d32f2f;
+}
+
+/* Pulsanti centrati */
+div a button {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+div a button:hover {
+    background-color: #e53935;
+}

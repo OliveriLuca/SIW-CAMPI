@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 
+
+<head>
+	<title>Campo inserito</title>
+	<link rel="stylesheet" href="/css/stile.css"/>
+</head>	
+
 <body>
 
 	<section>
@@ -18,13 +24,42 @@
 	</div>
 	<div>
 		<span>Costo: </span>
-		<span th:text="${campo.costo}"></span>
+		<span th:text="${campo.costo}"></span> <br></br>
 	</div>
 	
-	<a href="/success">Torna alla homePage dell' Admin</a>
+	<!-- Sezione per l'immagine -->
+	   <div>
+		
+	    <span>Immagine: </span>
+		
+	   <div th:if="${campo.tipo == '5vs5'}">
+	     <img src="/images/siw-campi-5vs5.png"  width="50%">
+	      <span th:if="${campo.tipo != '5vs5'}">Nessuna immagine disponibile</span>
+	   </div>
+	   
+	   <div th:if="${campo.tipo == '8vs8'}">
+	   	   <img src="/images/siw-campi-8vs8.png"  width="50%">
+	   	   <span th:if="${campo.tipo != '8vs8'}">Nessuna immagine disponibile</span>
+	   </div>
+		   
+	   <div th:if="${campo.tipo == '11vs11'}">
+		   <img src="/images/siw-campi-11vs11.png"  width="50%">
+		   <span th:if="${campo.tipo != '11vs11'}">Nessuna immagine disponibile</span>
+	   </div>   
+	   
+	   </div>
+	
+	<a href="/success">Torna alla homepage dell' Admin</a>
 	</div>
 
 	</section>
+	
+	
+		
 
 </body>
 </html>
+
+
+
+ 

@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>siw-campi</title>
+	<link rel="stylesheet" href="/css/stile2.css"/>
 </head>
 <body>
     <nav>
@@ -21,8 +22,8 @@
         <div th:unless="${registrazioni.isEmpty()}">
             <ul>
                 <li th:each="user : ${registrazioni}">
-                    <span th:text="'Nome: ' + ${user.name} + '    Cognome: ' + ${user.surname} +
-					'    Email: ' + ${user.email}"> </span>
+                    <span th:text="'Nome: ' + ${user.name} +   ' Cognome: ' + ${user.surname} +  
+					'  Email: ' + ${user.email}"> </span>
                 </li>
             </ul>
         </div>

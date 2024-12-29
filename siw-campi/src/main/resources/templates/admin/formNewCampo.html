@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 
+<head> 
+	<title>Creazione del campo</title>
+	<link rel="stylesheet" href="/css/stile.css"/>
+</head>
+
+	    
 <body>
 	
 	<section>
+		<div>
+		 <a href="/logout">Logout</a>
+		</div> 
+		
 	<div>
 	<div>
 		     <div>
 				<h1>Aggiungi un campo</h1>
-				</div>
+			 </div>
 	<form th:action="@{/admin/campo}" method="POST">
 		
 		
@@ -36,14 +46,14 @@
 		
 		<div >
 			
-			<section>    
+			   
                 <label>Tipo di campo:</label>
                 <select id="tipo" name="tipo">
                     <option value="5vs5">5 vs 5</option>
                     <option value="8vs8">8 vs 8</option>
                     <option value="11vs11">11 vs 11</option>
               </select>
-			</section>
+			
 			
 		</div>
 		

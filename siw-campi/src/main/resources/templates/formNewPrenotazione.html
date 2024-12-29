@@ -11,12 +11,31 @@
 
 	<section>
 	    <form th:action="@{/formNewPrenotazione/{id}(id=${campoDaPrenotare.id})}" th:object="${prenotazione}" method="POST">
-	        <section>
+			
+			
+				
+				<div th:if="${campoDaPrenotare.tipo == '5vs5'}">
+				  <img src="/images/siw-campi-5vs5.png"  width="50%">
+				  <span th:if="${campoDaPrenotare.tipo != '5vs5'}">Nessuna immagine disponibile</span>
+				</div>
+				
+				<div th:if="${campoDaPrenotare.tipo == '8vs8'}">
+				  <img src="/images/siw-campi-8vs8.png"  width="50%">
+				  <span th:if="${campoDaPrenotare.tipo != '8vs8'}">Nessuna immagine disponibile</span>
+				</div>
+				
+				<div th:if="${campoDaPrenotare.tipo == '11vs11'}">
+				  <img src="/images/siw-campi-11vs11.png"  width="50%">
+				  <span th:if="${campoDaPrenotare.tipo != '11vs11'}">Nessuna immagine disponibile</span>
+				</div>
+				
+		   
+	       
 	            <label for="date">Data:</label> 
 	            <input type="date" id="date" name="data" required th:field="${prenotazione.data}" min="2025-01-01" max="2025-12-31">
-	        </section> 
+	       
 	        
-	        <section>
+	      
 	            <label for="orario">Orario:</label>
 	            <select id="orario" name="orario" required th:field="${prenotazione.orario}">
 	                <option value="16:00">16:00</option>
@@ -24,7 +43,7 @@
 	                <option value="19:00">19:00</option>
 	                <option value="20:30">20:30</option>
 	            </select>
-	        </section>
+	        
 	        
 	        <button type="submit">Prenota</button>
 	    </form>

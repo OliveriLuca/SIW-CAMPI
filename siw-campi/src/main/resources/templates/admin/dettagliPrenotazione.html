@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 
+
+<head>
+    <title>Dettagli prenotazione</title>
+	<link rel="stylesheet" href="/css/stile.css"/>
+</head>
 <body>
 
 	<section>
@@ -24,8 +29,9 @@
 	
 	<div>
 	    <span>Email utente: </span>
-		<span th:text="${prenotazione.user.email}"></span>
+		<span th:text="${prenotazione.user.email}"></span> 
 	</div>
+	<br></br>
 	
 	<a href="/admin/prenotazioni">Torna all' elenco delle prenotazioni</a>
 	

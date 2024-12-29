@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>siw-campi</title>
+    <title>campi</title>
+	<link rel="stylesheet" href="/css/stile2.css"/>
 </head>
 <body>
     <nav>
@@ -21,13 +22,13 @@
         <div th:unless="${campi.isEmpty()}">
             <ul>
                 <li th:each="campo : ${campi}">
-                    <span th:text="${campo.nome} + ' ('+ ${campo.tipo} + ')'"></span>
+                    <span th:text="${campo.nome} + ' ('+ ${campo.tipo} + ')' + '   Costo: ' + ${campo.costo}"></span>
                     
                     <!-- Bottone per modificare il campo -->
                     <a th:href="@{'/admin/showFormModificaCampo/' + ${campo.id}}">
                         <button type="button">Modifica</button>
                     </a>
-                    
+					
                     <!-- Bottone per eliminare il campo -->
                     <a th:href="@{'/admin/cancellaCampo/' + ${campo.id} }">
                         <button type="button">Elimina</button>

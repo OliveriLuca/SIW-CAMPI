@@ -3,7 +3,6 @@ package it.uniroma3.siw.controller;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,13 +13,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import it.uniroma3.siw.model.Campo;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Prenotazione;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.CampoRepository;
 import it.uniroma3.siw.repository.PrenotazioneRepository;
+import it.uniroma3.siw.service.CampoService;
 import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.UserService;
 
@@ -40,6 +39,9 @@ public class UserController {
 
 	@Autowired
 	CampoRepository campoRepository;
+	
+	@Autowired
+	CampoService campoService;
 
 
 	@GetMapping("/admin/cancellaCampo/{id}")
@@ -76,10 +78,11 @@ public class UserController {
 
 
 	@PostMapping("/admin/formModificaCampo/{id}")
-	public String formModificaCampo(@PathVariable("id") Long id, @ModelAttribute Campo nuovoCampo, Model model) {
+	public String formModificaCampo(@PathVariable("id") Long id,@ModelAttribute Campo nuovoCampo,Model model) {
 		Campo campo = this.campoRepository.findById(id).orElse(null);
+		
 		if (campo != null) {
-			if (!nuovoCampo.getNome().equals(campo.getNome())) {
+			if (!nuovoCampo.getNome().equals(campo.getNome()) && !this.campoService.existsByNome(nuovoCampo.getNome())) {
 				campo.setNome(nuovoCampo.getNome());
 			}
 			if (nuovoCampo.getCosto() != campo.getCosto()) {

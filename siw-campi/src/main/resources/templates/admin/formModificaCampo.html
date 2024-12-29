@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+	<title>Modifica campo</title>
+	<link rel="stylesheet" href="/css/stile.css"/>
+</head>
+
 <body>
 
-<section >
-    <div >
-        <div >
-            <div >
+<section>
+    <div>
+        <div>
+            <div>
                 <h1>Modifica il campo</h1>
             </div>
 
             <!-- Associa `campoDaModificare` come oggetto principale del form -->
             <form th:action="@{'/admin/formModificaCampo/' + ${campoDaModificare.id}}" th:object="${campoDaModificare}" method="POST">
                 
-                <div >
+                <div>
                     <label>Nome del campo</label>
                     <span><input type="text" required th:field="*{nome}" /></span>
                 </div>  
