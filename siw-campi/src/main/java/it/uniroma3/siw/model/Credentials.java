@@ -8,7 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 
@@ -24,11 +23,9 @@ public class Credentials {
 	private Long id;
 
 	@Column(unique = true)
-	@NotBlank(message = "Username non può essere vuoto")
 	@Size(min = 4, max = 40, message = "Username deve avere tra 4 e 40 caratteri")
 	private String username;
 
-	@NotBlank(message = "Password non può essere vuota")
 	@Size(min = 4, message = "Password deve avere almeno 4 caratteri")
 	private String password;
 

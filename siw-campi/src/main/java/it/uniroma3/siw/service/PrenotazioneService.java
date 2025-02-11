@@ -6,10 +6,12 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
 import it.uniroma3.siw.model.Campo;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Prenotazione;
@@ -95,6 +97,6 @@ public class PrenotazioneService {
 	public boolean existsByOrarioAndDataAndCampo(LocalTime orario, LocalDate data, Campo campo) {
 		return (this.prenotazioneRepository.existsByCampo(campo) && this.existsByOrarioAndData(orario, data)); 
 	}
-
-
+	
+	
 }

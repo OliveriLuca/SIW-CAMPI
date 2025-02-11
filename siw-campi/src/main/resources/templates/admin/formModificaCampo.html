@@ -20,16 +20,15 @@
                 
                 <div>
                     <label>Nome del campo</label>
-                    <span><input type="text" required th:field="*{nome}" /></span>
+                    <span><input type="text" th:field="${campoDaModificare.nome}" /></span>
                 </div>  
 
-                <div >
+                <div>
                     <label>Aumenta o riduci il costo</label>
-                    <span><input type="text" required th:field="*{costo}" /></span>
+                    <span><input type="text" th:field="${campoDaModificare.costo}" /></span>
                 </div>
 
-
-                <div >
+                <div>
                     <label>Cambia il tipo</label>
 					<select id="tipo" name="tipo">
 					 <option value="5vs5">5 vs 5</option>
@@ -37,6 +36,12 @@
 					 <option value="11vs11">11 vs 11</option>
 					 </select>
                 </div>
+				
+				<div th:object="${campoDaModificare}">	
+				<div th:if="${#fields.hasGlobalErrors()}">
+					<li th:each="err: ${#fields.globalErrors()}" th:text="${err}">...</li>
+				</div>
+				</div>
 
                 <div>
                     <button class="button-confirmP" type="submit">Effettua modifica</button>

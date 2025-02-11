@@ -20,6 +20,13 @@ public class CredentialsValidator {
 				&& credenzialiRepository.existsByUsername(cred.getUsername())){
 			errors.reject("credentials.duplicate");
 		}
+		if(cred.getUsername().isEmpty()) {
+            errors.reject("NotBlank.credentials.username");
+        }
+
+        if(cred.getPassword().isEmpty()) {
+            errors.reject("NotBlank.credentials.password");
+        }
 	}
 	
 

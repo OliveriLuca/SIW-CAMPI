@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import it.uniroma3.siw.controller.validator.CampoValidator;
 import it.uniroma3.siw.model.Campo;
 import it.uniroma3.siw.service.CampoService;
 import jakarta.validation.Valid;
+
 
 
 @Controller
@@ -39,7 +39,7 @@ public class CampoController {
 		
 		this.campoValidator.validate(campo, campoBindingResult);
 
-		if(! campoBindingResult.hasErrors()) {
+		if(!campoBindingResult.hasErrors()) {
 			this.campoService.save(campo); 
 			model.addAttribute("campo", campo);
 			return "/admin/campoInserito.html";
@@ -77,8 +77,6 @@ public class CampoController {
 		model.addAttribute("tipoCampi", this.campoService.findByTipo(tipo));
 		return "tipoCampo.html";
 	}
-
-
 
 
 }

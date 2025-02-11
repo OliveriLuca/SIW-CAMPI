@@ -2,7 +2,6 @@ package it.uniroma3.siw.model;
 
 
 import java.util.Objects;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,14 +34,14 @@ public class Campo {
 	private Long id;
 	
 	@Column(nullable = false)
-	private int costo;
+	private Integer costo;
 	
 	@Column(nullable = false)
 	private String tipo;
 	
 	@Column(nullable = false)
 	private String nome;
-	
+
 	
 	@Override
 	public int hashCode() {
@@ -76,13 +75,12 @@ public class Campo {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	
-	public int getCosto() {
+	public Integer getCosto() {
 		return costo;
 	}
 
-	public void setCosto(int costo) {
+	public void setCosto(Integer costo) {
 		this.costo = costo;
 	}
 

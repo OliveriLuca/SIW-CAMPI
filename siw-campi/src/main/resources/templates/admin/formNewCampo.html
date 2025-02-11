@@ -19,6 +19,7 @@
 		     <div>
 				<h1>Aggiungi un campo</h1>
 			 </div>
+			 
 	<form th:action="@{/admin/campo}" method="POST">
 		
 		
@@ -30,31 +31,24 @@
 						
 			
 		<div>
-				<label>Nome del campo</label>
-				<span><input type="text"  required th:field="${campo.nome}" /></span>
-				
-				</span>
+			<label>Nome del campo</label>
+			<span><input type="text" th:field="${campo.nome}" /></span>
 		</div>	
 			
 		
-		<div >
+		<div>
 			<label>Costo</label>
-			<span><input required type="text"   th:field="${campo.costo}" /></span>
-			</span>
+			<span><input type="text" th:field="${campo.costo}" /></span>
 		</div>
 		
 		
-		<div >
-			
-			   
+		<div>
                 <label>Tipo di campo:</label>
                 <select id="tipo" name="tipo">
                     <option value="5vs5">5 vs 5</option>
                     <option value="8vs8">8 vs 8</option>
                     <option value="11vs11">11 vs 11</option>
-              </select>
-			
-			
+                </select>
 		</div>
 		
       </div>

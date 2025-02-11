@@ -22,7 +22,7 @@ public class CampoService {
 		return this.campoRepository.findById(id);
 	}
 
-	public List<Campo> findByCosto(int c) {
+	public List<Campo> findByCosto(Integer c) {
 		return this.campoRepository.findByCosto(c);
 	}
 
@@ -41,7 +41,6 @@ public class CampoService {
 	public boolean existsByNome(String nome) {
 		return this.campoRepository.existsByNome(nome);
 	}
-	
 	
 
 }

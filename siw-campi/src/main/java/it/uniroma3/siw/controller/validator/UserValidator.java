@@ -21,6 +21,21 @@ public class UserValidator implements Validator {
 				&& userRepository.existsByEmail(utente.getEmail())) {
 			errors.reject("user.duplicate");
 		}
+		
+		String nome = utente.getName().trim();
+        String cognome = utente.getSurname().trim();
+
+        if(nome.isEmpty()) {
+            errors.reject("NotBlank.user.name");
+        }
+
+        if(cognome.isEmpty()) {
+            errors.reject("NotBlank.user.surname");
+        }
+        
+        if (utente.getEmail().isEmpty()) {
+        	 errors.reject("NotBlank.user.email");
+        }
 	}
 	
 	@Override

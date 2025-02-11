@@ -13,7 +13,7 @@ public interface CampoRepository extends CrudRepository<Campo, Long>{
 
 	public Campo findById(long id); 
 	
-	public List<Campo> findByCosto(int c);
+	public List<Campo> findByCosto(Integer c);
 	
 	public List<Campo> findByTipo(String s);
 	

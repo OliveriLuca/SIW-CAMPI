@@ -34,5 +34,6 @@ public interface PrenotazioneRepository extends CrudRepository<Prenotazione, Lon
 	public boolean existsByCampo(Campo campo);
 	
 	public boolean existsByOrarioAndDataAndCampo(LocalTime orario, LocalDate data, Campo campo);
-
+	
+	
 }

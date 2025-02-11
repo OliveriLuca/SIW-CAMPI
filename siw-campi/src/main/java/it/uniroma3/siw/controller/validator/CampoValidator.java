@@ -14,19 +14,30 @@ public class CampoValidator implements Validator {
 	@Autowired
 	private CampoRepository campoRepository;
 
-	
+
 	public void validate(Object o, Errors errors) {
-		Campo campo = (Campo)o;
-		if (campo.getNome()!=null 
-				&& campoRepository.existsByNome(campo.getNome())){
+		
+		Campo campo = (Campo) o;
+
+		if (campoRepository.existsByNome(campo.getNome())){
 			errors.reject("campo.duplicate");
 		}
+		if(campo.getCosto() == null) {
+			errors.reject("NotNull.campo.costo");
+		}
+		if(campo.getNome().isEmpty()) {
+			errors.reject("NotBlank.campo.nome");
+		}
+		if(campo.getTipo().isEmpty()) {
+			errors.reject("NotBlank.campo.tipo");
+		}
+
 	}
-	
+
 
 	public boolean supports(Class<?> aClass) {
 		return Campo.class.equals(aClass);
 	}
-	
-	
+
+
 }

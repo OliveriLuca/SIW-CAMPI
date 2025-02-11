@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Prenotazione;
 import it.uniroma3.siw.model.User;
@@ -42,8 +41,14 @@ public class PrenotazioneController {
 
 	@GetMapping("/admin/prenotazioni")
 	public String getPrenotazioni(Model model) {
-		model.addAttribute("prenotazioni", this.prenotazioneService.findAll());
-		return "/admin/prenotazioni.html";
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		String userRole = credentials.getRole();
+		if(userRole.equals("ADMIN")) {
+			model.addAttribute("prenotazioni", this.prenotazioneService.findAll());
+			return "/admin/prenotazioni.html";
+		}
+		return "accessoNegato.html";
 	}
 
 
@@ -56,7 +61,7 @@ public class PrenotazioneController {
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 		String userRole = credentials.getRole();
 
-		if(userRole.equals("ADMIN")) {
+		if(prenotazioneDaVisualizzare!=null || userRole.equals("ADMIN")) {
 			model.addAttribute("prenotazione", prenotazioneDaVisualizzare);
 			return "/admin/dettagliPrenotazione.html";
 		}

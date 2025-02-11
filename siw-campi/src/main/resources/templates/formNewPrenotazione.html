@@ -29,13 +29,11 @@
 				  <span th:if="${campoDaPrenotare.tipo != '11vs11'}">Nessuna immagine disponibile</span>
 				</div>
 				
-		   
 	       
 	            <label for="date">Data:</label> 
 	            <input type="date" id="date" name="data" required th:field="${prenotazione.data}" min="2025-01-01" max="2025-12-31">
 	       
 	        
-	      
 	            <label for="orario">Orario:</label>
 	            <select id="orario" name="orario" required th:field="${prenotazione.orario}">
 	                <option value="16:00">16:00</option>
