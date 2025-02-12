@@ -55,7 +55,7 @@ public class UserController {
 
 		/*sono presenti prenotazioni per questo campo?*/
 		/*il campo esiste?*/
-		if (campoDaCancellare==null && this.prenotazioneRepository.existsByCampo(campoDaCancellare)) {
+		if (campoDaCancellare==null || this.prenotazioneRepository.existsByCampo(campoDaCancellare)) {
 			return "/admin/eliminazioneNegata.html";
 		}
 
