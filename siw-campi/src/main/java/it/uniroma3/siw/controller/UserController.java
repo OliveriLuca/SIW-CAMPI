@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -89,11 +90,14 @@ public class UserController {
 
 
 	@PostMapping("/admin/formModificaCampo/{id}")
-	public String formModificaCampo(@PathVariable("id") Long id, @Valid @ModelAttribute Campo nuovoCampo, Model model) {
+	public String formModificaCampo(@PathVariable("id") Long id, @Valid @ModelAttribute Campo nuovoCampo,
+			BindingResult campoBindingResult, Model model) {
 
 		Campo campo = this.campoRepository.findById(id).orElse(null);
+		
+		this.campoValidator.validate(nuovoCampo, campoBindingResult);
 
-		if (campo != null && !nuovoCampo.getNome().isEmpty()) {
+		if (campo != null && !nuovoCampo.getNome().isEmpty() && !campoBindingResult.hasErrors()) {
 
 			if (!nuovoCampo.getNome().equals(campo.getNome()) ) {
 				campo.setNome(nuovoCampo.getNome());
